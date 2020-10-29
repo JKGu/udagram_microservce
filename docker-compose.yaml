@@ -1,7 +1,7 @@
 version: "3"
 services:
   reverseproxy:
-      image: krasserp/reverseproxy
+      image: gu0119/udagramreverseproxy
       ports:
           - 8080:8080
       restart: always
@@ -9,7 +9,7 @@ services:
         - backend-user
         - backend-feed     
   backend-user:
-    image: krasserp/udacity-restapi-user
+    image: gu0119/udagramapiuser
     volumes:
       - $HOME/.aws:/root/.aws
     environment:
@@ -23,7 +23,7 @@ services:
       UG_JWT_SECRET: $UG_JWT_SECRET
       URL: "http://localhost:8100"
   backend-feed:
-    image: krasserp/udacity-restapi-feed
+    image: gu0119/udagramapifeed
     volumes:
       - $HOME/.aws:/root/.aws
     environment:
@@ -37,6 +37,6 @@ services:
       UG_JWT_SECRET: $UG_JWT_SECRET
       URL: "http://localhost:8100"
   frontend:
-    image: krasserp/udacity-frontend:local
+    image: gu0119/udagramfront
     ports:
       - "8100:80"
